@@ -1,0 +1,39 @@
+{
+  "name": "if",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "lint-write": "eslint --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gittafia/If-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gittafia/If-js/issues"
+  },
+  "homepage": "https://github.com/gittafia/If-js#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-config-airbnb": "^18.2.1"
+  },
+  "dependencies": {
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2"
+  },
+  "lint-staged": {
+    "*.(js|jsx)": [
+      "npm run lint:write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
