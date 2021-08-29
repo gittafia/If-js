@@ -4,12 +4,7 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: [
-    'airbnb',
-    'airbnb/hooks',
-    'eslint:recommended',
-    'plugin:react/recommended'
-  ],
+  extends: ['airbnb', 'airbnb/hooks', 'eslint:recommended', 'plugin:react/recommended'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -17,9 +12,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: [
-    'react'
-  ],
+  plugins: ['react'],
   rules: {
     'comma-dangle': 'off',
     'no-unused-expressions': 'off',
