@@ -30,7 +30,7 @@ const arr = [2, 3, 5, 8];
 let result = 1;
 
 for (let i = 0; i < arr.length; i++) {
-  result = result * arr[i];
+  result *= arr[i];
 }
 
 console.log(result);
@@ -48,7 +48,7 @@ for (let i = 0; i < arr2.length; i++) {
 const arr3 = [2, 5, 8, 15, 0, 6, 20, 3];
 
 for (let i = 0; i < arr3.length; i++) {
-  if (arr3[i] % 2 == 0) {
+  if (arr3[i] % 2 === 0) {
     console.log(arr3[i]);
   }
 }
