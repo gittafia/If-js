@@ -44,7 +44,7 @@ for (let i = 0; i < arr2.length; i++) {
   }
 }
 
-//4.
+//5.
 const arr3 = [2, 5, 8, 15, 0, 6, 20, 3];
 
 for (let i = 0; i < arr3.length; i++) {
@@ -52,3 +52,49 @@ for (let i = 0; i < arr3.length; i++) {
     console.log(arr3[i]);
   }
 }
+
+//lesson-3
+//1.
+function palindrome(str) {
+  str = str.toLowerCase();
+  return str === str.split('').reverse().join('');
+}
+console.log(palindrome('Анна'));
+
+//2.
+//min
+function min(a, b) {
+  return a > b ? a : b;
+}
+console.log(min(2, 4));
+
+function min(a, b) {
+  return a < b ? a : b;
+}
+console.log(min(-1, -2));
+
+//max
+function max(a, b) {
+  return a > b ? a : b;
+}
+console.log(max(200, 0));
+
+function max(a, b) {
+  return a > b ? a : b;
+}
+console.log(max(-200, -201));
+
+//3.
+function replaceZeros(array) {
+  for (let i = 0; i < array.length; i++) {
+    let numStr = '' + array[i];
+    if (numStr.indexOf('0') !== -1) {
+      numStr = numStr.replaceAll('0', 'zero');
+      array[i] = numStr;
+    }
+  }
+}
+
+let array1 = [1, 20, 33, 49, 80, 33, 14, 12, 11, 30];
+replaceZeros(array1);
+console.log(array1);
