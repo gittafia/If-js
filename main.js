@@ -1,8 +1,8 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable func-names */
 /* eslint-disable no-plusplus */
-/* eslint-disable max-len */
-/* eslint-disable linebreak-style */
+
 // lesson-2
 // 1. Работа с переменными:
 let user = 'John Doe';
@@ -19,7 +19,8 @@ console.log(user);
 let test = 1;
 test += 1;
 test += '1';
-/* Учитывая,что при бинарном операторе сложения, если в выражении хотя бы один операнд будет строкой,
+/*  Учитывая,что при бинарном операторе сложения,
+если в выражении хотя бы один операнд будет строкой,
 то конечный результат тоже будет строкой, то наша переменная сейчас должна быть равна '21'. */
 console.log(test);
 
@@ -106,7 +107,7 @@ function replaceZeros(array) {
       numStr = numStr.replaceAll('0', 'zero');
       resultArr.push(numStr);
     } else {
-      resultArr.push(`${array[i]}`);
+      resultArr.push(numStr);
     }
   }
   return resultArr;
@@ -115,18 +116,12 @@ console.log(replaceZeros([100, 304, 5, 666, 909]));
 
 // lesson-4
 // 1.
-function someFunction(f) {
-  return function (a) {
-    return function (b) {
-      return f(a, b);
-    };
+function sum(a) {
+  return function (b) {
+    return a + b;
   };
 }
-function getSum(a, b) {
-  return a + b;
-}
 
-const sum = someFunction(getSum);
 console.log(sum(5)(2));
 
 // 2.
@@ -145,3 +140,66 @@ const f1 = function () {
 for (let i = 0; i < pCollect.length; i++) {
   pCollect[i].addEventListener('click', f1());
 }
+
+//  lesson-5
+//  1.
+const date = '2020-11-26';
+const dateArray = date.split('-');
+const newDate = `${dateArray[2]}.${dateArray[1]}.${dateArray[0]}`;
+console.log(newDate);
+
+//  2.
+const data = [
+  {
+    country: 'Russia',
+    city: 'Saint Petersburg',
+    hotel: 'Hotel Leopold'
+  },
+  {
+    country: 'Spain',
+    city: 'Santa Cruz de Tenerife',
+    hotel: 'Apartment Sunshine'
+  },
+  {
+    country: 'Slowakia',
+    city: 'Vysokie Tatry',
+    hotel: 'Villa Kunerad'
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hostel Friendship'
+  },
+  {
+    country: 'Indonesia',
+    city: 'Bali',
+    hotel: 'Ubud Bali Resort&SPA'
+  },
+  {
+    country: 'Netherlands',
+    city: 'Rotterdam',
+    hotel: 'King Kong Hostel'
+  },
+  {
+    country: 'Marocco',
+    city: 'Ourika',
+    hotel: 'Rokoko Hotel'
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hotel Rehberge Berlin Mitte'
+  }
+];
+
+function filterData(strToFilter) {
+  data.forEach((rec) => {
+    for (const [key, value] of Object.entries(rec)) {
+      if (value.toUpperCase() === strToFilter.toUpperCase()) {
+        console.log(`country: ${rec.country}, city: ${rec.city}, hotel: ${rec.hotel}`);
+      }
+    }
+  });
+}
+
+filterData('berlin');
