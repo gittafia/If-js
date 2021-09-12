@@ -383,3 +383,42 @@ function collectCities(array) {
 
 const newMap = collectCities(hotels);
 newMap.forEach((k, v) => console.log(`contry: ${v}, cities: ${k}`));
+
+//  *
+const daysInWeek = 7;
+const daysInMonth = 30;
+const dayOfWeek = 4;
+
+const createCalendar = (monthLength, weekLength, firstDay) => {
+  if (firstDay > 6) {
+    throw new Error('select day between 0 and 6');
+  }
+
+  const calendar = [];
+  let week = [];
+
+  if (firstDay !== 0) {
+    for (let i = firstDay - 1; i >= 0; i--) {
+      week.push(monthLength - i);
+    }
+  }
+
+  for (let i = 1; i <= monthLength; i++) {
+    week.push(i);
+    if (week.length === weekLength) {
+      calendar.push(week);
+      week = [];
+    }
+    if (i === monthLength && week.length !== 0) {
+      const temp = weekLength - week.length;
+      for (let j = 1; j <= temp; j++) {
+        week.push(j);
+      }
+      calendar.push(week);
+    }
+  }
+
+  return calendar;
+};
+
+console.log(createCalendar(daysInMonth, daysInWeek, dayOfWeek));
