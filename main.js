@@ -1,4 +1,7 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-shadow */
+/* eslint-disable no-prototype-builtins */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable func-names */
 /* eslint-disable no-plusplus */
@@ -385,13 +388,108 @@ const newMap = collectCities(hotels);
 newMap.forEach((k, v) => console.log(`contry: ${v}, cities: ${k}`));
 
 //  *
+// const daysInWeek = 7;
+// const daysInMonth = 30;
+// const dayOfWeek = 4;
+
+// const createCalendar = (monthLength, weekLength, firstDay) => {
+//   if (firstDay > 6) {
+//     throw new Error('select day between 0 and 6');
+//   }
+
+//   const calendar = [];
+//   let week = [];
+
+//   if (firstDay !== 0) {
+//     for (let i = firstDay - 1; i >= 0; i--) {
+//       week.push(monthLength - i);
+//     }
+//   }
+
+//   for (let i = 1; i <= monthLength; i++) {
+//     week.push(i);
+//     if (week.length === weekLength) {
+//       calendar.push(week);
+//       week = [];
+//     }
+//     if (i === monthLength && week.length !== 0) {
+//       const temp = weekLength - week.length;
+//       for (let j = 1; j <= temp; j++) {
+//         week.push(j);
+//       }
+//       calendar.push(week);
+//     }
+//   }
+
+//   return calendar;
+// };
+
+// console.log(createCalendar(daysInMonth, daysInWeek, dayOfWeek));
+
+//  lesson-7
+//  1.
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1
+    }
+  }
+};
+
+const obj2 = {
+  b: {
+    c: {
+      a: 1
+    },
+    b: 'b',
+    a: 'a'
+  },
+  a: 'a'
+};
+
+const obj3 = {
+  a: {
+    c: {
+      a: 'a'
+    },
+    b: 'b',
+    a: 'a'
+  },
+  b: 'b'
+};
+
+const deepEqual = (object1, object2) => {
+  const isTypeObject = typeof object1 === 'object' && object2;
+  const isNotNull = object1 !== null && object2 !== null;
+  if (isTypeObject && isNotNull) {
+    for (const key in object1) {
+      if (!object2.hasOwnProperty(key)) return false;
+      if (typeof object1[key] === 'object' && typeof object2[key] === 'object') {
+        const result = deepEqual(object1[key], object2[key]);
+        if (!result) return false;
+      } else if (object1[key] !== object2[key]) return false;
+    }
+    return true;
+  }
+  return object1 === object2;
+};
+
+console.log(deepEqual(obj1, obj2));
+console.log(deepEqual(obj1, obj3));
+
+//  *
 const daysInWeek = 7;
 const daysInMonth = 30;
 const dayOfWeek = 4;
+const checkInDate = 3;
+const checkOutDate = 8;
 
-const createCalendar = (monthLength, weekLength, firstDay) => {
+const createCalendar = (monthLength, weekLength, firstDay, checkIn, checkOut) => {
   if (firstDay > 6) {
-    throw new Error('select day between 0 and 6');
+    throw new Error('select number between 0 and 6');
   }
 
   const calendar = [];
@@ -399,12 +497,22 @@ const createCalendar = (monthLength, weekLength, firstDay) => {
 
   if (firstDay !== 0) {
     for (let i = firstDay - 1; i >= 0; i--) {
-      week.push(monthLength - i);
+      const day = {
+        dayOfMonth: monthLength - i,
+        notCurrentMonth: true,
+        selectedDay: false
+      };
+      week.push(day);
     }
   }
 
   for (let i = 1; i <= monthLength; i++) {
-    week.push(i);
+    const day = {
+      dayOfMonth: i,
+      notCurrentMonth: false,
+      selectedDay: !!(i === checkIn || i === checkOut)
+    };
+    week.push(day);
     if (week.length === weekLength) {
       calendar.push(week);
       week = [];
@@ -412,7 +520,12 @@ const createCalendar = (monthLength, weekLength, firstDay) => {
     if (i === monthLength && week.length !== 0) {
       const temp = weekLength - week.length;
       for (let j = 1; j <= temp; j++) {
-        week.push(j);
+        const day = {
+          dayOfMonth: j,
+          notCurrentMonth: true,
+          selectedDay: false
+        };
+        week.push(day);
       }
       calendar.push(week);
     }
@@ -421,4 +534,4 @@ const createCalendar = (monthLength, weekLength, firstDay) => {
   return calendar;
 };
 
-console.log(createCalendar(daysInMonth, daysInWeek, dayOfWeek));
+console.log(createCalendar(daysInMonth, daysInWeek, dayOfWeek, checkInDate, checkOutDate));
