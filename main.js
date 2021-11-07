@@ -628,3 +628,5 @@ for (let i = 0; i < paragraphs.length; i++) {
     coloring(this).next();
   });
 }
+
+//  lesson-10
