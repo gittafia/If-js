@@ -604,3 +604,14 @@ class Students {
 
 const students = new Students(studentsData);
 students.getInfo();
+
+const user1 = {
+  firstName: 'Bob'
+};
+
+function func() {
+  return this.firstName;
+}
+
+const funcUser = func.call(user1);
+console.log(funcUser);
