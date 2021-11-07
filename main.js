@@ -604,3 +604,27 @@ class Students {
 
 const students = new Students(studentsData);
 students.getInfo();
+
+//  lesson-9
+//  1.
+const colorsChange = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+
+function coloring(el) {
+  const index = 0;
+
+  return {
+    next() {
+      let ind = colorsChange.indexOf(el.style.backgroundColor);
+      if (ind === colorsChange.length - 1) ind = -1;
+      // eslint-disable-next-line no-param-reassign
+      el.style.backgroundColor = colorsChange[ind + 1];
+    }
+  };
+}
+
+const paragraphs = document.getElementsByTagName('p');
+for (let i = 0; i < paragraphs.length; i++) {
+  paragraphs[i].addEventListener('click', function (event) {
+    coloring(this).next();
+  });
+}
