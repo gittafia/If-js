@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable max-classes-per-file */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-shadow */
 /* eslint-disable no-prototype-builtins */
@@ -197,7 +198,7 @@ const data = [
 
 function filterData(strToFilter) {
   data.forEach((rec) => {
-    for (const [key, value] of Object.entries(rec)) {
+    for (const [, value] of Object.entries(rec)) {
       if (value.toUpperCase() === strToFilter.toUpperCase()) {
         console.log(`country: ${rec.country}, city: ${rec.city}, hotel: ${rec.hotel}`);
       }
@@ -535,3 +536,71 @@ const createCalendar = (monthLength, weekLength, firstDay, checkIn, checkOut) =>
 };
 
 console.log(createCalendar(daysInMonth, daysInWeek, dayOfWeek, checkInDate, checkOutDate));
+
+//  lesson-8
+//  1.
+const studentsData = [
+  {
+    firstName: 'Василий',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Java'
+  },
+  {
+    firstName: 'Иван',
+    lastName: 'Иванов',
+    admissionYear: 2018,
+    courseName: 'JavaScript'
+  },
+  {
+    firstName: 'Александр',
+    lastName: 'Федоров',
+    admissionYear: 2017,
+    courseName: 'Python'
+  },
+  {
+    firstName: 'Николай',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Android'
+  }
+];
+
+class User {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+class Student extends User {
+  constructor(firstName, lastName, admissionYear, courseName) {
+    super(firstName, lastName);
+    this.admissionYear = admissionYear;
+    this.courseName = courseName;
+  }
+
+  get course() {
+    return new Date().getFullYear() - this.admissionYear;
+  }
+}
+
+class Students {
+  constructor(data) {
+    this.students = data.map(
+      (x) => new Student(x.firstName, x.lastName, x.admissionYear, x.courseName)
+    );
+  }
+
+  getInfo() {
+    this.students.sort((a, b) => a.course - b.course);
+    this.students.forEach((x) => console.log(`${x.fullName} - ${x.courseName}, ${x.course} курс`));
+  }
+}
+
+const students = new Students(studentsData);
+students.getInfo();
