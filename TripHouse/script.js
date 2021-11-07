@@ -62,7 +62,7 @@ const data = [
 
 //  First way
 const ulElement = document.querySelector('.recommendations__list');
-data.forEach((entity) => {
+data.slice(0, 4).forEach((entity) => {
   const li = document.createElement('li');
 
   const img = document.createElement('img');
@@ -82,14 +82,14 @@ data.forEach((entity) => {
   ulElement.appendChild(li);
 });
 
-//  Second way
-const nTrylElement = document.querySelector('.recommendations__list');
+// //  Second way
+// const nTrylElement = document.querySelector('.recommendations__list');
 
-data.forEach((entity) => {
-  nTrylElement.innerHTML += `<li>
-    <img src=${entity.imageUrl} alt=${entity.name}/>
-    <a href="#">${entity.name}</a>
-    <p>${(entity.country, entity.city)}</p>
-  </li>
- `;
-});
+// data.forEach((entity) => {
+//   nTrylElement.innerHTML += `<li>
+//     <img src=${entity.imageUrl} alt=${entity.name}/>
+//     <a href="#">${entity.name}</a>
+//     <p>${(entity.country, entity.city)}</p>
+//   </li>
+//  `;
+// });
