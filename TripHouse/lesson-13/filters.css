@@ -1,0 +1,55 @@
+.filters {
+    position: absolute;
+    top: 610px;
+    right: 262px;
+    display: flex;
+    flex-direction: column;
+    width: 259px;
+    padding: 22px;
+    background: white;
+    font-size: 16px;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+.filters button {
+    font-size: 18px;
+    color: #3077C6;
+    border: solid 1px #3077C6;
+    background: white;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.filter button:disabled {
+    color: #CECECE;
+    border: solid 1px #CECECE;
+    cursor: default;
+}
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter:not(:first-child) {
+    margin-top: 12px;
+}
+
+.filter-count {
+    margin: 0 20px 0 19px;
+}
+
+.modal-overlay {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hide {
+    display: none;
+}
