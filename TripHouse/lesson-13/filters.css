@@ -1,55 +1,64 @@
 .filters {
-    position: absolute;
-    top: 610px;
-    right: 262px;
-    display: flex;
-    flex-direction: column;
-    width: 259px;
-    padding: 22px;
-    background: white;
-    font-size: 16px;
-    border-radius: 8px;
-    z-index: 2;
+  position: absolute;
+  top: 625px;
+  right: 347px;
+  display: flex;
+  flex-direction: column;
+  width: 259px;
+  padding: 22px;
+  background: white;
+  font-size: 16px;
+  border-radius: 8px;
+  z-index: 2;
 }
 
 .filters button {
-    font-size: 18px;
-    color: #3077C6;
-    border: solid 1px #3077C6;
-    background: white;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+  font-size: 18px;
+  color: #3077c6;
+  border: solid 1px #3077c6;
+  background: white;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .filter button:disabled {
-    color: #CECECE;
-    border: solid 1px #CECECE;
-    cursor: default;
+  color: #cecece;
+  border: solid 1px #cecece;
+  cursor: default;
 }
 
 .filter {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filter:not(:first-child) {
-    margin-top: 12px;
+  margin-top: 12px;
 }
 
 .filter-count {
-    margin: 0 20px 0 19px;
+  margin: 0 20px 0 19px;
 }
 
 .modal-overlay {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .hide {
-    display: none;
+  display: none;
+}
+
+.child-age-question {
+  color: #333333;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 14px !important;
+  margin: 28px 22px 12px -27px !important;
 }
